@@ -11,7 +11,6 @@
     "build": "webpack --mode production",
     "test:e2e": "npx playwright test"
   },
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/smartlyio/fullstackopen-cicd.git"
