@@ -10,18 +10,18 @@ export default defineConfig({
   reporter: 'html',
 
   use: {
-    baseURL: 'http://localhost:8080',  
+    baseURL: 'http://localhost:8080',
     trace: 'on-first-retry',
   },
 
   webServer: {
-    command: 'npm run start-prod',     
+    command: 'node app.cjs',
     url: 'http://localhost:8080',
     timeout: 120 * 1000,
     reuseExistingServer: !process.env.CI,
   },
 
- 
+
   projects: [
     {
       name: 'chromium',
