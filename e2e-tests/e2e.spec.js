@@ -10,6 +10,6 @@ describe('Pokedex', () => {
   })
   test('clicking on a character opens its details page', async ({ page }) => {
     await page.goto('/pokemon/ivysaur')
-    await expect(page.getByText('chlorophyll')).toBeVisible()
+    await expect(page.getByText('overgrow')).toBeVisible()
   })
 })
