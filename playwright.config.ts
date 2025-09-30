@@ -17,7 +17,7 @@ export default defineConfig({
   webServer: {
     command: 'node app.cjs',
     url: 'http://localhost:8080',
-    timeout: 200 * 1000,
+    timeout: 120 * 1000,
     reuseExistingServer: !process.env.CI,
   },
 
