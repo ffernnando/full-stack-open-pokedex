@@ -21,6 +21,13 @@ jobs:
         run: npm run build
       - name: test
         run: npm run test
+      - name: Upload Playwright traces
+        if: always() # always upload, even on failure
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-traces
+          path: test-results/**/*.zip
+
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
       - name: Run E2E tests
