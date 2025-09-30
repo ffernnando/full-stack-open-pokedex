@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 8080
 app.use(express.static('dist'))
 
 app.get('/version', (req, res) => {
-  console.log('ping')
   res.send('1') // change this string to ensure a new version deployed
 })
 app.get('*', (req, res) => {
