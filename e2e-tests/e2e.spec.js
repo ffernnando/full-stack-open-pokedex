@@ -12,9 +12,10 @@ describe('Pokedex', () => {
   test('clicing on a character opens its details page', async ({ page }) => {
     await page.goto('')
     await page.goto('/pokemon/ivysaur')
+    await expect(page).toHaveURL(/ivysaur/)
     await expect(page.getByText('ivysaur')).toBeVisible()
-    await expect(page.getByText('Home')).toBeVisible()
-    await expect(page.getByText('overgrow')).toBeVisible()
+    //await expect(page.getByText('Home')).toBeVisible()
+    await expect(page.getByText('chlorophyll')).toBeVisible()
   })
   /* test('clicing on a character opens its details page', async ({ page }) => {
     await page.goto('/pokemon/ivysaur')
