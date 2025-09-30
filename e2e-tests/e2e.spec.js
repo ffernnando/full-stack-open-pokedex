@@ -9,7 +9,7 @@ describe('Pokedex', () => {
     await expect(page.getByText('Pokémon and Pokémon character names are trademarks of Nintendo.')).toBeVisible()
   })
   test('clicking on a character opens its details page', async ({ page }) => {
-    await page.goto('pokemon/ivysaur')
+    await page.goto('http://localhost:8080/pokemon/ivysaur')
     await expect(page.getByText('overgrow')).toBeVisible()
   })
 })
