@@ -25,3 +25,8 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run e2e test
         run: npm run test:e2e
+      - name: Render deploy service
+        uses: glarivie/render-deploy-service-action@v1.0.5
+        with: 
+          serviceId: ${{ secrets.MY_RENDER_SERVICE_ID }}
+          apiKey: ${{ secrets.MY_RENDER_API_KEY }}
