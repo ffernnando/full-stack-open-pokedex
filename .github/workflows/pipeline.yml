@@ -29,6 +29,7 @@ jobs:
       - name: Run e2e test
         run: npm run test:e2e
       - name: Render deploy service
+        if: ${{ github.event_name == 'push' }}
         uses: glarivie/render-deploy-service-action@v1.0.5
         with: 
           serviceId: ${{ secrets.MY_RENDER_SERVICE_ID }}
