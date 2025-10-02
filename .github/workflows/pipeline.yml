@@ -65,3 +65,26 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
           DRY_RUN: true
+
+  notify_discord:
+    needs: [simple_deployment_pipeline, tag_release]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Notify Discord on failure
+        if: ${{ needs.simple_deployment_pipeline.result == 'failure' }}
+        uses: rjstone/discord-webhook-notify@v2.2.1
+        with:
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          username: GitHub notificator
+          text: "Deployment pipeline failed!"
+
+      - name: Notify Discord on success
+        if: ${{ needs.simple_deployment_pipeline.result == 'success' && needs.tag_release.result == 'success' }}
+        uses: rjstone/discord-webhook-notify@v2.2.1
+        with:
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          username: GitHub notificator
+          text: "Deployment succeeded and release tagged."
+
+          
