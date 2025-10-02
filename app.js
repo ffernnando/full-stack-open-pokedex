@@ -16,6 +16,10 @@ app.get('/health', (req, res) => {
   res.send('ok')
 })
 
+app.get('/new_feature', (req, res) => {
+  res.send('new feature at play')
+})
+
 app.get('*', (req, res) => {
   res.sendFile(__dirname + '/dist/index.html')
 })
