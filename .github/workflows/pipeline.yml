@@ -34,3 +34,14 @@ jobs:
         with: 
           serviceId: ${{ secrets.MY_RENDER_SERVICE_ID }}
           apiKey: ${{ secrets.MY_RENDER_API_KEY }}
+  tag_release:
+    needs: [simple_deployment_pipeline]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Bump version and push tag
+        if: ${{ github.event_name == 'push' }}
+        uses: anothrNick/github-tag-action@1.64.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
+          DRY_RUN: true
